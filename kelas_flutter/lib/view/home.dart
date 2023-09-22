@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:kelas_flutter/component/button.dart';
+import 'package:kelas_flutter/view/code.dart';
 import 'package:kelas_flutter/view/learn.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -28,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.only(left: 10, right: 10),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 15,
@@ -122,31 +124,46 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(
                 height: 15,
               ),
-              Container(
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green), color: Colors.red),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.chevron_right,
-                      size: 20,
-                    ),
-                    Text(
-                      "1",
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ],
+              // TextButton(onPressed: onPressed, child: child),
+              // ElevatedButton(onPressed: onPressed, child: child)
+              // IconButton(onPressed: onPressed, icon: icon)
+              SizedBox(
+                width: lebar / 3,
+                child: RoundedButton(
+                  onSentuh: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => BelajarCode())),
+                  label: 'Pindah Halaman',
+                  icon: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              Divider(
-                color: Colors.red,
-              ),
-              Text(
-                "3",
-                style: TextStyle(fontSize: 40),
-              ),
+              // Container(
+              //   margin: EdgeInsets.all(10),
+              //   decoration: BoxDecoration(
+              //       border: Border.all(color: Colors.green), color: Colors.red),
+              //   child: const Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       Icon(
+              //         Icons.chevron_right,
+              //         size: 20,
+              //       ),
+              //       Text(
+              //         "1",
+              //         style: TextStyle(fontSize: 40),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Divider(
+              //   color: Colors.red,
+              // ),
+              // Text(
+              //   "3",
+              //   style: TextStyle(fontSize: 40),
+              // ),
             ]),
       ),
     );

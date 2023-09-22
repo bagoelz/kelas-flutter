@@ -20,6 +20,7 @@ class LearnWidget extends StatelessWidget {
           id: 2,
           progress: 80),
     ];
+
     return ListView(
       scrollDirection: Axis.horizontal,
       children: List.generate(dataLearn.length, (index) {
