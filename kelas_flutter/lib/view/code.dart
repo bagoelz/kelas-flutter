@@ -37,8 +37,6 @@ class BelajarCode extends StatelessWidget {
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ElevatedButton(
                 onPressed: () => cetakData(), child: const Text('Check'))

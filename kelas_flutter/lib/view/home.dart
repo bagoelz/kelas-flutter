@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kelas_flutter/component/button.dart';
+import 'package:kelas_flutter/model/learn.dart';
 import 'package:kelas_flutter/view/code.dart';
+import 'package:kelas_flutter/view/drawer/drawer.dart';
 import 'package:kelas_flutter/view/learn.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,11 +14,56 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int angka = 0;
+  final menuBawah = BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.call),
+        label: 'Calls',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.camera),
+        label: 'Camera',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.chat),
+        label: 'Chats',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.people),
+        label: 'Profile',
+      ),
+    ],
+  );
+
+  nambahAngka(index, LearnModel data) {
+    // setState(() {
+    //   angka++;
+    // });
+    setState(() {
+      // dataLearn.add(
+      //   LearnModel(
+      //       title: "Design System UI/UX design ${dataLearn.length + 1}",
+      //       subtitle: "Product Designer",
+      //       image: "assets/kelas_flutter.png",
+      //       id: dataLearn.length + 1,
+      //       progress: 70),
+      // );
+      dataLearn[index] = data;
+    });
+
+    for (LearnModel result in dataLearn) {
+      print(result.title);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double lebar = MediaQuery.of(context).size.width;
     double tinggi = MediaQuery.of(context).size.height;
     return Scaffold(
+      drawer: const DrawerPage(),
+      endDrawer: const DrawerPage(),
       appBar: AppBar(
         title: const Text(
           'BERANDA',
@@ -116,29 +163,37 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 width: lebar - 20,
                 height: tinggi / 3,
-                child: LearnWidget(
-                  lebar: lebar - 20,
-                  tinggi: tinggi,
+                child: Scrollbar(
+                  child: LearnWidget(
+                    dataTampil: dataLearn,
+                    lebar: lebar - 20,
+                    tinggi: tinggi,
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 15,
               ),
-              // TextButton(onPressed: onPressed, child: child),
+              // Text(
+              //   '$angka',
+              //   style:
+              //       const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              // ),
+              // RoundedButton(onSentuh: () {}, label: "Tambah"),
               // ElevatedButton(onPressed: onPressed, child: child)
               // IconButton(onPressed: onPressed, icon: icon)
-              SizedBox(
-                width: lebar / 3,
-                child: RoundedButton(
-                  onSentuh: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => BelajarCode())),
-                  label: 'Pindah Halaman',
-                  icon: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   width: lebar / 3,
+              //   child: RoundedButton(
+              //     onSentuh: () => Navigator.of(context).push(
+              //         MaterialPageRoute(builder: (context) => BelajarCode())),
+              //     label: 'Pindah Halaman',
+              //     icon: const Icon(
+              //       Icons.chevron_right,
+              //       color: Colors.white,
+              //     ),
+              //   ),
+              // ),
               // Container(
               //   margin: EdgeInsets.all(10),
               //   decoration: BoxDecoration(
@@ -166,6 +221,20 @@ class _MyHomePageState extends State<MyHomePage> {
               // ),
             ]),
       ),
+      bottomNavigationBar: menuBawah,
+      // floatingActionButton: Align(
+      //   alignment: Alignment.bottomLeft,
+      //   child: Padding(
+      //     padding: const EdgeInsets.only(left: 20),
+      //     child: FloatingActionButton(
+      //       child: Icon(
+      //         Icons.location_on,
+      //         color: Colors.red,
+      //       ),
+      //       onPressed: () {},
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

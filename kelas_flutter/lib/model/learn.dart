@@ -10,3 +10,17 @@ class LearnModel {
     required this.progress,
   });
 }
+
+List<LearnModel> dataLearn = [
+  LearnModel(
+      title: "Design System UI/UX design",
+      subtitle: "Product Designer",
+      image: "assets/kelas_flutter.png",
+      id: 1,
+      progress: 60),
+  LearnModel(
+      title: "Design Poster In Adobe Photoshop",
+      subtitle: "Product Designer",
+      id: 2,
+      progress: 80),
+];
