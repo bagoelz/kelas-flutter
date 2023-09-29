@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kelas_flutter/shared/colorVariant.dart';
 import 'package:kelas_flutter/view/adaptive.dart';
+import 'package:kelas_flutter/view/auth/signIn.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -26,5 +27,5 @@ void main() {
       ),
       title: 'Belajar Flutter',
       debugShowCheckedModeBanner: false,
-      home: ResponsivePage()));
+      home: const SignInPage()));
 }
