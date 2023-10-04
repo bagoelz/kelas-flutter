@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "951489887055",
+    "project_id": "kelasflutter-8cc64",
+    "storage_bucket": "kelasflutter-8cc64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951489887055:android:5d54e06fbffdeaec51e33a",
+        "android_client_info": {
+          "package_name": "Webmedia.kelas_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9GfxtCRX5NRGTz7KX5cdGMIJH9Utkn5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
