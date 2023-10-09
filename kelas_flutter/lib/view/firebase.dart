@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kelas_flutter/component/button.dart';
+import 'package:kelas_flutter/component/formfield.dart';
+import 'package:kelas_flutter/component/validator.dart';
 import 'package:kelas_flutter/model/bioData.dart';
 import 'package:kelas_flutter/shared/constant.dart';
 import 'package:kelas_flutter/shared/extension.dart';
@@ -16,6 +18,49 @@ class FirebaseDemo extends StatefulWidget {
 class _MyWidgetState extends State<FirebaseDemo> {
   CollectionReference dataRef = FirebaseFirestore.instance.collection("debug");
   List<BioData> dataPengguna = <BioData>[];
+  TextEditingController namaText = TextEditingController();
+  TextEditingController genderText = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  showform(BioData dataPengguna) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              key: const Key('data'),
+              content: Form(
+                key: formKey,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 2,
+                  child: Column(
+                    children: [
+                      FormInputField(
+                        labelText: 'nama',
+                        controller: namaText,
+                        validateFunction: Validator().validateUsername,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      FormInputField(
+                        labelText: 'Gender',
+                        controller: genderText,
+                        validateFunction: Validator().validateCharacter,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      RoundedButton(
+                        label: 'SIMPAN',
+                        onSentuh: () =>
+                            {if (!formKey.currentState!.validate()) {}},
+                      )
+                    ],
+                  ),
+                ),
+              ));
+        });
+  }
+
   simpan() {
     // firestore.set({
     //   "tas": {"nama": "agus", "umur": 19}
@@ -122,13 +167,16 @@ class _MyWidgetState extends State<FirebaseDemo> {
                           width: 5,
                         ),
                         RoundedButton(
-                          label: 'edit',
-                          icon: const Icon(
-                            Icons.edit,
-                            size: 15,
-                          ),
-                          onSentuh: () {},
-                        ),
+                            label: 'edit',
+                            icon: const Icon(
+                              Icons.edit,
+                              size: 15,
+                            ),
+                            onSentuh: () {
+                              namaText.text = bio.nama!;
+                              genderText.text = bio.gender!;
+                              showform(bio);
+                            }),
                       ],
                     ),
                     const Divider()
