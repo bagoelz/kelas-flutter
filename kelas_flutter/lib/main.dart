@@ -1,16 +1,20 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kelas_flutter/controller/User.dart';
 import 'package:kelas_flutter/firebase_options.dart';
 import 'package:kelas_flutter/shared/colorVariant.dart';
 import 'package:kelas_flutter/view/adaptive.dart';
 import 'package:kelas_flutter/view/auth/signIn.dart';
 import 'package:kelas_flutter/view/firebase.dart';
 import 'package:kelas_flutter/view/loop.dart';
+import 'package:kelas_flutter/view/user.dart';
 
 void main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  Get.put<UserController>(UserController());
   runApp(MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
@@ -34,5 +38,5 @@ void main() async {
       ),
       title: 'Belajar Flutter',
       debugShowCheckedModeBanner: false,
-      home: const FirebaseDemo()));
+      home: const UserScreen()));
 }
