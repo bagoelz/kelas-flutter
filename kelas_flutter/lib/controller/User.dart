@@ -22,7 +22,6 @@ class UserController extends GetxController {
   tukarStatus(status, urutan) {
     dataUser[urutan].selected = !status;
     dataUser.refresh();
-    print(dataUser[urutan].selected);
   }
 
   hapusData(urutan) {
@@ -31,7 +30,13 @@ class UserController extends GetxController {
   }
 
   rubahNama(urutan) {
-    dataUser[urutan].nama = "${dataUser[urutan].nama} $urutan";
+    dataUser[urutan].edit = true;
+    dataUser.refresh();
+  }
+
+  fungsiEdit(urutan, nama) {
+    dataUser[urutan].edit = false;
+    dataUser[urutan].nama = nama;
     dataUser.refresh();
   }
 
